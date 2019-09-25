@@ -205,6 +205,9 @@ namespace HumaneSociety
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
+<<<<<<< HEAD
+
+=======
             Animal animalFromDB = db.Animals.Where(a => a.AnimalId == animalId).Single();
             foreach(KeyValuePair<int,string>entry in updates)
             {
@@ -239,11 +242,14 @@ namespace HumaneSociety
                 }  
             }
             db.SubmitChanges();
+>>>>>>> de031888d942832b4fb4f41d7556fb086c6de0ba
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            Animal removeAnimal = db.Animals.Where(a => a.AnimalId == animal.AnimalId).FirstOrDefault();
+            db.Animals.DeleteOnSubmit(removeAnimal);
+            db.SubmitChanges();
         }
         
         // TODO: Animal Multi-Trait Search
