@@ -179,6 +179,8 @@ namespace HumaneSociety
 
         internal static Animal GetAnimalByID(int id)
         {
+            Animal animal = db.Animals.Where(a => a.id == id).FirstOrDefault();
+            return animal;
            
         }
 
