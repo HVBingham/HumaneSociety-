@@ -55,3 +55,11 @@ INSERT INTO Rooms VALUES(7,null);
 INSERT INTO Rooms VALUES(8,null);
 INSERT INTO Rooms VALUES(9, null);
 INSERT INTO Rooms VALUES(10, null);
+
+INSERT INTO Clients VALUES('Madeline', 'Sanchez', 'SanMad', 'sanMAD123', null, 'madsan@gmail.com');
+INSERT INTO Clients VALUES('Jose', 'Fuentez', 'JosFue', 'fueJOS123', null, 'josfue@gmail.com');
+INSERT INTO Clients VALUES('Maria', 'Santos', 'MarSan', 'sanMAR123', null, 'marsan@gmail.com');
+INSERT INTO Clients VALUES('George', 'Mendoza', 'GeoMen', 'menGEO123', null, 'geomen@gmail.com');
+INSERT INTO Clients VALUES('Andrea', 'Gonzalez', 'AndGon', 'gonAND123', null, 'andgon@gmail.com');
+
+SELECT * FROM Clients

@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HumaneSocietyData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="HumaneSocietyData.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HumaneSocietyData.dbml</DependentUpon>
+    </Compile>
     <Compile Include="PointOfEntry.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="HumaneSocietyData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>HumaneSocietyData.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HumaneSocietyData.dbml.layout">
+      <DependentUpon>HumaneSocietyData.dbml</DependentUpon>
+    </None>
     <None Include="HumaneSocietyData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>HumaneSocietyData.designer.cs</LastGenOutput>
