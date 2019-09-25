@@ -163,18 +163,35 @@ namespace HumaneSociety
         // TODO: Allow any of the CRUD operations to occur here
         internal static void RunEmployeeQueries(Employee employee, string crudOperation)
         {
-            throw new NotImplementedException();
+            switch (crudOperation)
+            {
+                case "create":
+                    db.Employees.InsertOnSubmit(employee);
+                    db.SubmitChanges();
+                    break;
+                case "delete":
+                    
+
+                    break;
+                case "read":
+                    Employee readEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
+                    readEmployee.EmployeeNumber = employee.EmployeeNumber;
+                    break;
+                case "update":
+                    Employee updateEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
+                    updateEmployee.FirstName = employee.FirstName;
+                    updateEmployee.LastName = employee.LastName;
+                    updateEmployee.EmployeeNumber = employee.EmployeeNumber;
+                    updateEmployee.Email = employee.Email;
+                    db.SubmitChanges();
+                    break;
+                default:
+                    break;
+
+
+            }
         }
-        internal static void AddEmployee(Employee employee)
-        {
-            db.Employees.InsertOnSubmit(employee);
-            db.SubmitChanges();
-        }
-        internal static Employee GetEmployeeByID(int id)
-        {
-            Employee employee = db.Employees.Where(e => e.EmployeeId == id).FirstOrDefault();
-            return employee;
-        }
+    
         internal static void AddAnimal(Animal animal)
         {
             db.Animals.InsertOnSubmit(animal);
@@ -184,7 +201,6 @@ namespace HumaneSociety
         {
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animal;
-           
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
@@ -220,9 +236,12 @@ namespace HumaneSociety
                         break;
                     default:
                         return;
+<<<<<<< HEAD
                 }
+=======
+                }  
+>>>>>>> 26f1b6c85b9fbaa557244ca4bdbf839380bb3c51
             }
-             db.Animals.InsertOnSubmit(animalFromDB);
             db.SubmitChanges();
         }
 
@@ -245,13 +264,11 @@ namespace HumaneSociety
             Category categoryId = db.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
             return categoryId.CategoryId;
         }
-        
         internal static Room GetRoom(int animalId)
         {
             Room room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
             return room;
         }
-        
         internal static int GetDietPlanId(string dietPlanName)
         {
             DietPlan dietPlanId = db.DietPlans.Where(d => d.Name == dietPlanName).FirstOrDefault();
