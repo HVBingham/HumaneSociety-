@@ -187,14 +187,15 @@ namespace HumaneSociety
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {      
-            
-            
+        {
+
         }
 
         internal static void RemoveAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+            Animal removeAnimal = db.Animals.Where(a => a.AnimalId == animal.AnimalId).FirstOrDefault();
+            db.Animals.DeleteOnSubmit(removeAnimal);
+            db.SubmitChanges();
         }
         
         // TODO: Animal Multi-Trait Search
