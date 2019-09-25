@@ -189,9 +189,6 @@ namespace HumaneSociety
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
-<<<<<<< HEAD
-
-=======
             Animal animalFromDB = db.Animals.Where(a => a.AnimalId == animalId).Single();
             foreach(KeyValuePair<int,string>entry in updates)
             {
@@ -224,11 +221,9 @@ namespace HumaneSociety
                     default:
                         return;
                 }
-               
             }
              db.Animals.InsertOnSubmit(animalFromDB);
             db.SubmitChanges();
->>>>>>> de031888d942832b4fb4f41d7556fb086c6de0ba
         }
 
         internal static void RemoveAnimal(Animal animal)
@@ -247,10 +242,8 @@ namespace HumaneSociety
         // TODO: Misc Animal Things
         internal static int GetCategoryId(string categoryName)
         {
-
             Category categoryId = db.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
             return categoryId.CategoryId;
-
         }
         
         internal static Room GetRoom(int animalId)
@@ -261,16 +254,22 @@ namespace HumaneSociety
         
         internal static int GetDietPlanId(string dietPlanName)
         {
-
             DietPlan dietPlanId = db.DietPlans.Where(d => d.Name == dietPlanName).FirstOrDefault();
             return dietPlanId.DietPlanId;
-
         }
 
         // TODO: Adoption CRUD Operations
         internal static void Adopt(Animal animal, Client client)
         {
-            throw new NotImplementedException();
+            var clientAdopting = db.Clients.Where(c => c.ClientId == client.ClientId).FirstOrDefault();
+            var animalAdopted = db.Animals.Where(a => a.AnimalId == animal.AnimalId).FirstOrDefault();
+            Adoption adoption = new Adoption();
+            adoption.ClientId = clientAdopting.ClientId;
+            adoption.AnimalId = animalAdopted.AnimalId;
+            adoption.ApprovalStatus = "pending";
+            adoption.PaymentCollected = false;
+            db.Adoptions.InsertOnSubmit(adoption);
+            db.SubmitChanges();
         }
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
