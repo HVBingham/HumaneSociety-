@@ -10,53 +10,48 @@ CREATE TABLE Addresses (AddressId INTEGER IDENTITY (1,1) PRIMARY KEY, AddressLin
 CREATE TABLE Clients (ClientId INTEGER IDENTITY (1,1) PRIMARY KEY, FirstName VARCHAR(50), LastName VARCHAR(50), UserName VARCHAR(50), Password VARCHAR(50), AddressId INTEGER FOREIGN KEY REFERENCES Addresses(AddressId), Email VARCHAR(50));
 CREATE TABLE Adoptions(ClientId INTEGER FOREIGN KEY REFERENCES Clients(ClientId), AnimalId INTEGER FOREIGN KEY REFERENCES Animals(AnimalId), ApprovalStatus VARCHAR(50), AdoptionFee INTEGER, PaymentCollected BIT, CONSTRAINT AdoptionId PRIMARY KEY (ClientId, AnimalId));
 
-INSERT INTO USStates VALUES('Alabama','AL');
-INSERT INTO USStates VALUES('Alaska','AK');
-INSERT INTO USStates VALUES('Arizona','AZ');
-INSERT INTO USStates VALUES('Arkansas','AR');
-INSERT INTO USStates VALUES('California','CA');
-INSERT INTO USStates VALUES('Colorado','CO');
-INSERT INTO USStates VALUES('Connecticut','CT');
-INSERT INTO USStates VALUES('Delaware','DE');
-INSERT INTO USStates VALUES('Florida','FL');
-INSERT INTO USStates VALUES('Georgia','GA');
-INSERT INTO USStates VALUES('Hawaii','HI');
-INSERT INTO USStates VALUES('Idaho','ID');
-INSERT INTO USStates VALUES('Illinois','IL');
-INSERT INTO USStates VALUES('Indiana','IN');
-INSERT INTO USStates VALUES('Iowa','IA');
-INSERT INTO USStates VALUES('Kansas','KS');
-INSERT INTO USStates VALUES('Kentucky','KY');
-INSERT INTO USStates VALUES('Louisiana','LA');
-INSERT INTO USStates VALUES('Maine','ME');
-INSERT INTO USStates VALUES('Maryland','MD');
-INSERT INTO USStates VALUES('Massachusetts','MA');
-INSERT INTO USStates VALUES('Michigan','MI');
-INSERT INTO USStates VALUES('Minnesota','MN');
-INSERT INTO USStates VALUES('Mississippi','MS');
-INSERT INTO USStates VALUES('Missouri','MO');
-INSERT INTO USStates VALUES('Montana','MT');
-INSERT INTO USStates VALUES('Nebraska','NE');
-INSERT INTO USStates VALUES('Nevada','NV');
-INSERT INTO USStates VALUES('New Hampshire','NH');
-INSERT INTO USStates VALUES('New Jersey','NJ');
-INSERT INTO USStates VALUES('New Mexico','NM');
-INSERT INTO USStates VALUES('New York','NY');
-INSERT INTO USStates VALUES('North Carolina','NC');
-INSERT INTO USStates VALUES('North Dakota','ND');
-INSERT INTO USStates VALUES('Ohio','OH');
-INSERT INTO USStates VALUES('Oklahoma','OK');
-INSERT INTO USStates VALUES('Oregon','OR');
-INSERT INTO USStates VALUES('Pennsylvania','PA');
-INSERT INTO USStates VALUES('Rhode Island','RI');
-INSERT INTO USStates VALUES('South Carolina','SC');
-INSERT INTO USStates VALUES('South Dakota','SD');
-INSERT INTO USStates VALUES('Tennessee','TN');
-INSERT INTO USStates VALUES('Texas','TX');
-INSERT INTO USStates VALUES('Utah','UT');
-INSERT INTO USStates VALUES('Vermont','VT');
-INSERT INTO USStates VALUES('Virginia','VA');
-INSERT INTO USStates VALUES('Washington','WA');
-INSERT INTO USStates VALUES('West Virgina','WV');
-INSERT INTO USStates VALUES('Wisconsin','WI');
-INSERT INTO USStates VALUES('Wyoming','WY');
+INSERT INTO Categories VALUES('Cat');
+INSERT INTO Categories VALUES('Dog');
+INSERT INTO Categories VALUES('Birds');
+INSERT INTO Categories VALUES('Lizards');
+INSERT INTO Categories VALUES('Rodents');
+INSERT INTO Employees VALUES('Liz','Curro','CurLiz','StanleyCup10',3214,'lizCur@gmail.com');
+INSERT INTO Employees VALUES('David','Beachem', 'BeaDav','Packers412',3215,'DavBea@gmail.com');
+INSERT INTO Employees VALUES('Amber','Dupras','DupAmb','Subie93',3216,'AmbDup@gmail.com');
+INSERT INTO Employees VALUES('Melissa','Fenninger','FenMel','AlleyTro247',3217,'MelMarFen@gmail.com');
+INSERT INTO Employees Values('Tyre','Ludeke','LudTyr','MonoLabe889',3218,'LudekeTyre@gmail.com');
+SELECT * FROM Categories
+SELECT * FROM Employees
+INSERT INTO DietPlans VALUES('Raw Cat','Varried Raw Meats',1.5);
+INSERT INTO DietPlans VALUES('Seeds','ZuPreem Fruit Blend',0.5);
+INSERT INTO DietPlans VALUES('Dog Puppy','Wellness Just For Puppies',1);
+INSERT INTO DietPlans VALUES('Cat Adult','Fromm Beef Livattini',.5);
+INSERT INTO DietPlans VALUES('Dog Adult','Wellness TruFood',2);
+SELECT * FROM DietPlans
+INSERT INTO Shots VALUES('Rabies');
+INSERT INTO Shots VALUES('Distemper');
+INSERT INTO Shots VALUES('Parvo');
+INSERT INTO Shots VALUES('CPV-2');
+INSERT INTO Shots VALUES('CAV-2');
+SELECT * FROM Shots
+SELECT * FROM DietPlans
+SELECT * FROM Employees
+SELECT * FROM Categories
+SELECT * FROM Animals
+SELECT * FROM Rooms
+INSERT INTO Animals VALUES('Nitro',95,4,'Hyper',1,1,'Male','adopted',2,5,null);
+INSERT INTO Animals VALUES('Alley',45,3,'Shy',0,0,'Female','not adopted',2,5,null);
+INSERT INTO Animals VALUES('Liam',10,6,'Loving',1,1,'Male','adopted',1,4,null);
+INSERT INTO Animals VALUES('Cyan',8,2,'Skiddish',0,0,'Male','not adopted',1,4,null);
+INSERT INTO Animals VALUES('Georgia',50,2,'Chill',1,1,'Female','adopted',2,5,null);
+
+INSERT INTO Rooms VALUES(1,2);
+INSERT INTO Rooms VALUES(2,1);
+INSERT INTO Rooms VALUES(3,3);
+INSERT INTO Rooms VALUES(4,4);
+INSERT INTO Rooms VALUES(5,5);
+INSERT INTO Rooms VALUES(6,null);
+INSERT INTO Rooms VALUES(7,null);
+INSERT INTO Rooms VALUES(8,null);
+INSERT INTO Rooms VALUES(9, null);
+INSERT INTO Rooms VALUES(10, null);
