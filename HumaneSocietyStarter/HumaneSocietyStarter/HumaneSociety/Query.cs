@@ -8,11 +8,11 @@ namespace HumaneSociety
 {
     public static class Query
     {        
-        static HumaneSocietyDataContext db;
+        static DataClasses1DataContext db;
 
         static Query()
         {
-            db = new HumaneSocietyDataContext();
+            db = new DataClasses1DataContext();
         }
 
         internal static List<USState> GetStates()
@@ -172,7 +172,12 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
-            throw new NotImplementedException();
+           
+            
+            
+           
+
+
         }
 
         internal static Animal GetAnimalByID(int id)
