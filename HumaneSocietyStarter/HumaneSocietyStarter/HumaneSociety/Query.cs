@@ -9,7 +9,6 @@ namespace HumaneSociety
     public static class Query
     {        
         static DataClasses1DataContext db;
-        //test git push
 
         static Query()
         {
