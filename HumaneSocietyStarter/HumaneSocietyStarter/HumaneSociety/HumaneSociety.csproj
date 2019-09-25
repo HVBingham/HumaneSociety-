@@ -34,7 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
+<<<<<<< HEAD
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll</HintPath>
+=======
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.dll</HintPath>
+>>>>>>> cff6c7b1a8110f4290d56b90f637d881468e72f8
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
