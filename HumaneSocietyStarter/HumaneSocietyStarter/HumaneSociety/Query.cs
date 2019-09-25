@@ -39,7 +39,7 @@ namespace HumaneSociety
         internal static void AddNewClient(string firstName, string lastName, string username, string password, string email, string streetAddress, int zipCode, int stateId)
         {
             Client newClient = new Client();
-
+           
             newClient.FirstName = firstName;
             newClient.LastName = lastName;
             newClient.UserName = username;
@@ -172,8 +172,10 @@ namespace HumaneSociety
         // TODO: Animal CRUD Operations
         internal static void AddAnimal(Animal animal)
         {
+            
             db.Animals.InsertOnSubmit(animal);
             db.SubmitChanges();
+
         }
 
 
@@ -185,8 +187,9 @@ namespace HumaneSociety
         }
 
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
-        {            
-            throw new NotImplementedException();
+        {      
+            
+            
         }
 
         internal static void RemoveAnimal(Animal animal)
