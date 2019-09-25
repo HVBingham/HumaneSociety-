@@ -174,7 +174,6 @@ namespace HumaneSociety
         {
             db.Animals.InsertOnSubmit(animal);
             db.SubmitChanges();
-
         }
 
 
@@ -242,7 +241,8 @@ namespace HumaneSociety
         // TODO: Shots Stuff
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-            throw new NotImplementedException();
+            var shotsReceived = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId);
+            return shotsReceived;
         }
 
         internal static void UpdateShot(string shotName, Animal animal)
