@@ -170,12 +170,13 @@ namespace HumaneSociety
                     db.SubmitChanges();
                     break;
                 case "delete":
-                    
-
+                    Employee deleteEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleOrDefault();
+                    db.Employees.DeleteOnSubmit(deleteEmployee);
+                    db.SubmitChanges();
                     break;
                 case "read":
-                    Employee readEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
-                    readEmployee.EmployeeNumber = employee.EmployeeNumber;
+                  
+                   
                     break;
                 case "update":
                     Employee updateEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
@@ -191,7 +192,6 @@ namespace HumaneSociety
 
             }
         }
-    
         internal static void AddAnimal(Animal animal)
         {
             db.Animals.InsertOnSubmit(animal);
@@ -202,12 +202,8 @@ namespace HumaneSociety
             Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
             return animal;
         }
-
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
-<<<<<<< HEAD
-
-=======
             Animal animalFromDB = db.Animals.Where(a => a.AnimalId == animalId).Single();
             foreach(KeyValuePair<int,string>entry in updates)
             {
@@ -242,7 +238,6 @@ namespace HumaneSociety
                 }  
             }
             db.SubmitChanges();
->>>>>>> de031888d942832b4fb4f41d7556fb086c6de0ba
         }
 
         internal static void RemoveAnimal(Animal animal)
