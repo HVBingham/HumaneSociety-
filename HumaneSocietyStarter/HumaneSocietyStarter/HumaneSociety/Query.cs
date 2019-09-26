@@ -192,8 +192,6 @@ namespace HumaneSociety
                     break;
                 default:
                     break;
-
-
             }
         }
         internal static void AddAnimal(Animal animal)
@@ -275,7 +273,6 @@ namespace HumaneSociety
             return dietPlanId.DietPlanId;
         }
 
-        
         internal static void Adopt(Animal animal, Client client)
         {
             Client clientAdopting = db.Clients.Where(c => c.ClientId == client.ClientId).FirstOrDefault();
@@ -312,11 +309,15 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
+<<<<<<< HEAD
             Adoption removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).SingleOrDefault();
+=======
+            var removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId && a.ClientId == clientId).FirstOrDefault();
+>>>>>>> 75c52c439ae42f1094d76970ada84d69596b3dd4
             db.Adoptions.DeleteOnSubmit(removeAdoption);
             db.SubmitChanges();
-
         }
+
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
            var shotsReceived = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId).SingleorDefault();
