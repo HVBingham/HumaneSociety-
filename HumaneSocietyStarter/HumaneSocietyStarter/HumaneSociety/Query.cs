@@ -199,8 +199,8 @@ namespace HumaneSociety
         }
         internal static Animal GetAnimalByID(int id)
         {
-            Animal animal = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
-            return animal;
+           return = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
+           
         }
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
@@ -261,8 +261,8 @@ namespace HumaneSociety
         }
         internal static Room GetRoom(int animalId)
         {
-            Room room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
-            return room;
+            return db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+          
         }
         internal static int GetDietPlanId(string dietPlanName)
         {
@@ -307,7 +307,7 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            var removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).Single();
+            Adoption removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).Single();
             db.Adoptions.DeleteOnSubmit(removeAdoption);
             db.SubmitChanges();
 
