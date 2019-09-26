@@ -175,7 +175,7 @@ namespace HumaneSociety
                     db.SubmitChanges();
                     break;
                 case "read":
-                    Employee readEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleorDefault();
+                    Employee readEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
                     List<string> employeeInfo = new List<string>();
                     employeeInfo.Add(readEmployee.FirstName);
                     employeeInfo.Add(readEmployee.LastName);
@@ -252,7 +252,41 @@ namespace HumaneSociety
         // TODO: Animal Multi-Trait Search
         internal static IQueryable<Animal> SearchForAnimalsByMultipleTraits(Dictionary<int, string> updates) // parameter(s)?
         {
-            throw new NotImplementedException();
+            IQueryable<Animal> animalToSearch = db.Animals;
+           foreach(KeyValuePair<int, string>entry in updates)
+            {
+                switch (entry.Key)
+                {
+                    case 1:
+                        animalToSearch = animalToSearch.Where(a => a.CategoryId == GetCategoryId(entry.Value));
+                        break;
+                    case 2:
+                        animalToSearch = animalToSearch.Where(a => a.Name == entry.Value);
+                        break;
+                    case 3:
+                        animalToSearch = animalToSearch.Where(a => a.Age == int.Parse(entry.Value));
+                        break;
+                    case 4:
+                        animalToSearch = animalToSearch.Where(a => a.Demeanor == entry.Value);
+                        break;
+                    case 5:
+                        animalToSearch = animalToSearch.Where(a => a.KidFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 6:
+                        animalToSearch = animalToSearch.Where(a => a.PetFriendly == Convert.ToBoolean(entry.Value));
+                        break;
+                    case 7:
+                        animalToSearch = animalToSearch.Where(a => a.Weight == int.Parse(entry.Value));
+                        break;
+                    case 8:
+                        animalToSearch = animalToSearch.Where(a => a.DietPlanId == int.Parse(entry.Value));
+                        break;
+                    default:
+                        UserInterface.DisplayUserOptions("You didn't enter in a correct trait.");
+                        break;
+                }
+            }
+            return animalToSearch;
         }
          
    
@@ -289,7 +323,8 @@ namespace HumaneSociety
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            var pendingAdoptions = db.Adoptions.Where(a => a.ApprovalStatus == "Pending");
+             
+           var pendingAdoptions = db.Adoptions.Where(a => a.ApprovalStatus == "Pending");
             return pendingAdoptions;
         }
 
@@ -309,24 +344,21 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-<<<<<<< HEAD
-            Adoption removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).SingleOrDefault();
-=======
+
             var removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId && a.ClientId == clientId).FirstOrDefault();
->>>>>>> 75c52c439ae42f1094d76970ada84d69596b3dd4
             db.Adoptions.DeleteOnSubmit(removeAdoption);
             db.SubmitChanges();
         }
 
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-           var shotsReceived = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId).SingleorDefault();
-            return shotsReceived;
+           IQueryable<AnimalShot> shotsRecieved = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId);
+            return shotsRecieved;
         }
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+          
         }
     }
 }
