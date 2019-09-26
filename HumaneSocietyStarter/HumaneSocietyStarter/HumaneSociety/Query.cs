@@ -187,8 +187,6 @@ namespace HumaneSociety
                     break;
                 default:
                     break;
-
-
             }
         }
     
@@ -308,7 +306,9 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            throw new NotImplementedException();
+            var removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId && a.ClientId == clientId).FirstOrDefault();
+            db.Adoptions.DeleteOnSubmit(removeAdoption);
+            db.SubmitChanges();
         }
 
         // TODO: Shots Stuff
