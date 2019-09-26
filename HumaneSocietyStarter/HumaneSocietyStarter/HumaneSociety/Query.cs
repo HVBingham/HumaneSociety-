@@ -175,11 +175,15 @@ namespace HumaneSociety
                     db.SubmitChanges();
                     break;
                 case "read":
-                  
-                   
+                    Employee readEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleorDefault();
+                    List<string> employeeInfo = new List<string>();
+                    employeeInfo.Add(readEmployee.FirstName);
+                    employeeInfo.Add(readEmployee.LastName);
+                    employeeInfo.Add(readEmployee.UserName);
+                    UserInterface.DisplayUserOptions(employeeInfo);
                     break;
                 case "update":
-                    Employee updateEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).Single();
+                    Employee updateEmployee = db.Employees.Where(e => e.EmployeeId == employee.EmployeeId).SingleOrDefault();
                     updateEmployee.FirstName = employee.FirstName;
                     updateEmployee.LastName = employee.LastName;
                     updateEmployee.EmployeeNumber = employee.EmployeeNumber;
@@ -199,12 +203,12 @@ namespace HumaneSociety
         }
         internal static Animal GetAnimalByID(int id)
         {
-           return = db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
-           
+           Animal animalId= db.Animals.Where(a => a.AnimalId == id).FirstOrDefault();
+            return animalId;
         }
         internal static void UpdateAnimal(int animalId, Dictionary<int, string> updates)
         {
-            Animal animalFromDB = db.Animals.Where(a => a.AnimalId == animalId).Single();
+            Animal animalFromDB = db.Animals.Where(a => a.AnimalId == animalId).SingleOrDefault();
             foreach(KeyValuePair<int,string>entry in updates)
             {
                 switch (entry.Key)
@@ -261,7 +265,8 @@ namespace HumaneSociety
         }
         internal static Room GetRoom(int animalId)
         {
-            return db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+            Room room= db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+            return room;
           
         }
         internal static int GetDietPlanId(string dietPlanName)
@@ -307,14 +312,14 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
-            Adoption removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).Single();
+            Adoption removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId).SingleOrDefault();
             db.Adoptions.DeleteOnSubmit(removeAdoption);
             db.SubmitChanges();
 
         }
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-            var shotsReceived = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId);
+           var shotsReceived = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId).SingleorDefault();
             return shotsReceived;
         }
 
