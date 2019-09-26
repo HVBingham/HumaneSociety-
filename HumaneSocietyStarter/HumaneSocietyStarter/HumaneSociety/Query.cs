@@ -344,7 +344,10 @@ namespace HumaneSociety
 
         internal static void RemoveAdoption(int animalId, int clientId)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64f7286223ba378b92f903f92b2f2f356e6e2b92
             var removeAdoption = db.Adoptions.Where(a => a.AnimalId == animalId && a.ClientId == clientId).FirstOrDefault();
             db.Adoptions.DeleteOnSubmit(removeAdoption);
             db.SubmitChanges();
@@ -358,7 +361,10 @@ namespace HumaneSociety
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64f7286223ba378b92f903f92b2f2f356e6e2b92
             DateTime now = DateTime.Now;
             var updateShots = db.Shots.Where(a => a.Name == shotName).Select(s => s.ShotId).FirstOrDefault();
             AnimalShot animalShot = new AnimalShot();
@@ -367,7 +373,10 @@ namespace HumaneSociety
             animalShot.DateReceived = now;
             db.AnimalShots.InsertOnSubmit(animalShot);
             db.SubmitChanges();
+<<<<<<< HEAD
 
+=======
+>>>>>>> 64f7286223ba378b92f903f92b2f2f356e6e2b92
         }
     }
 }
