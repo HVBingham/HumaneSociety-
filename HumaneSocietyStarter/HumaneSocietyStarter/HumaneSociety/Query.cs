@@ -251,7 +251,6 @@ namespace HumaneSociety
             throw new NotImplementedException();
         }
          
-   
         internal static int GetCategoryId(string categoryName)
         {
             Category categoryId = db.Categories.Where(c => c.Name == categoryName).FirstOrDefault();
@@ -317,7 +316,8 @@ namespace HumaneSociety
 
         internal static void UpdateShot(string shotName, Animal animal)
         {
-            throw new NotImplementedException();
+            var updateShots = db.AnimalShots.Where(u => u.AnimalId == animal.AnimalId).FirstOrDefault();
+            db.SubmitChanges();
         }
     }
 }
