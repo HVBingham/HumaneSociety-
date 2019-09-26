@@ -296,9 +296,8 @@ namespace HumaneSociety
         }
         internal static Room GetRoom(int animalId)
         {
-            Room room= db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
+            Room room = db.Rooms.Where(r => r.AnimalId == animalId).FirstOrDefault();
             return room;
-          
         }
         internal static int GetDietPlanId(string dietPlanName)
         {
@@ -322,8 +321,7 @@ namespace HumaneSociety
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-             
-           var pendingAdoptions = db.Adoptions.Where(a => a.ApprovalStatus == "Pending");
+            var pendingAdoptions = db.Adoptions.Where(a => a.ApprovalStatus == "Pending");
             return pendingAdoptions;
         }
 
@@ -350,7 +348,7 @@ namespace HumaneSociety
 
         internal static IQueryable<AnimalShot> GetShots(Animal animal)
         {
-           IQueryable<AnimalShot> shotsRecieved = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId);
+            IQueryable<AnimalShot> shotsRecieved = db.AnimalShots.Where(s => s.AnimalId == animal.AnimalId);
             return shotsRecieved;
         }
 
