@@ -236,11 +236,7 @@ namespace HumaneSociety
                         break;
                     default:
                         return;
-<<<<<<< HEAD
                 }
-=======
-                }  
->>>>>>> 26f1b6c85b9fbaa557244ca4bdbf839380bb3c51
             }
             db.SubmitChanges();
         }
@@ -284,6 +280,7 @@ namespace HumaneSociety
             adoption.ClientId = clientAdopting.ClientId;
             adoption.AnimalId = animalAdopted.AnimalId;
             adoption.ApprovalStatus = "pending";
+            adoption.AdoptionFee = null;
             adoption.PaymentCollected = false;
             db.Adoptions.InsertOnSubmit(adoption);
             db.SubmitChanges();
@@ -291,7 +288,8 @@ namespace HumaneSociety
 
         internal static IQueryable<Adoption> GetPendingAdoptions()
         {
-            throw new NotImplementedException();
+            var pendingAdoptions = db.Adoptions.Where(a => a.ApprovalStatus == "Pending");
+            return pendingAdoptions;
         }
 
         internal static void UpdateAdoption(bool isAdopted, Adoption adoption)
